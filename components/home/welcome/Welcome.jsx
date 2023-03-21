@@ -1,4 +1,4 @@
-import { useState,  } from 'react'
+import React, { useState,  } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
 import { useRouter } from 'expo-router';
 import styles from './welcome.style'
@@ -82,6 +82,7 @@ const Welcome = ({ name = "" }) => {
                         columnGap: SIZES.small
                     }
                 }
+                horizontal
             />
 
         </View>
