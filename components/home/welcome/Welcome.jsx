@@ -9,7 +9,7 @@ const jobTypes = ["Full-time", "Part-time", "Contractor"]
 const Welcome = ({ name = "" }) => {
 
     const router = useRouter();
-    const [activejobType, setActiveJobType] = useState("Full-time")
+    const [activeJobType, setActiveJobType] = useState("Full-time")
 
     return (
     <View>
@@ -62,13 +62,26 @@ const Welcome = ({ name = "" }) => {
                 data={jobTypes}
                 renderItem={({ item }) => (
                     <TouchableOpacity
-                        style={styles.tab(activeJobType, )}
+                        style={styles.tab(activeJobType, item)}
+                        onPress={() => {
+                                setActiveJobType(item);
+                                router.push(`/search/${item}`)
+                            }
+                        }
                     >
-                        <Text>
+                        <Text
+                            style={styles.tabText(activeJobType, item)}
+                        >
                             {item}
                         </Text>
                     </TouchableOpacity>
                 )}
+                keyExtractor={item => item}
+                contentContainerStyle={
+                    {
+                        columnGap: SIZES.small
+                    }
+                }
             />
 
         </View>
