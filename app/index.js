@@ -8,6 +8,8 @@ const Home = () => {
 
     const router = useRouter();
 
+    const [searchTerm, setSearchTerm] = useState("")
+
     return (
         <SafeAreaView
             style={
@@ -52,6 +54,15 @@ const Home = () => {
                 >
                     <Welcome
                         name="Subhanshu"
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        handleClick={
+                            () => {
+                                if(searchTerm) {
+                                    router.push(`/search/${searchTerm}`)
+                                }
+                            }
+                        }
                     />
 
                     <Popularjobs/>
