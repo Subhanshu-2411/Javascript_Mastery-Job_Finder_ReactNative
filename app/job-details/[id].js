@@ -21,10 +21,31 @@ const JobDetails = () => {
 
     const [refreshing, setRefreshing] = useState(false);
 
-    const [activeTabs, setActiveTabs] = useState(tabs[0])
+    const [activeTab, setActiveTab] = useState(tabs[0])
 
     const onRefresh = () => {
 
+    }
+
+    const displayTabContent = () => {
+        switch(activeTab) {
+            case "Qualifications":
+                return <Specifics
+                    title={activeTab}
+                    points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+                />
+            case "About":
+                return <JobAbout
+                    info={data[0].job_description ?? "No Data Provided"}
+                />
+            case "Responsibilities":
+                return <Specifics
+                    title={activeTab}
+                    points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+                />
+            default:
+                break;
+        }
     }
 
     return (
@@ -103,9 +124,13 @@ const JobDetails = () => {
 
                                 <JobTabs
                                     tabs={tabs}
-                                    activeTab={activeTabs}
-                                    setActiveTab={setActiveTabs}
+                                    activeTab={activeTab}
+                                    setActiveTab={setActiveTab}
                                 />
+
+                                {
+                                    displayTabContent()
+                                }
                             </View>
                         )
                     }
