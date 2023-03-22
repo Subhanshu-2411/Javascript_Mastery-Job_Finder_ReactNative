@@ -18,6 +18,12 @@ const Popularjobs = () => {
         }
     )
 
+    const [selectedJob, setSelectedJob] = useState()
+
+    const handlePress = (item) => {
+
+    }
+
     return (
         <View
             style={styles.container}

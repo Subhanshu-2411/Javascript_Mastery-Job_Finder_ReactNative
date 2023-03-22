@@ -4,54 +4,54 @@ import {checkImageURL} from "../../../../utils";
 import styles from './popularjobcard.style'
 
 const PopularJobCard = ( { item, selectedJob, handleCardPress } ) => {
-    console.log(item.employer_logo)
-  return (
-    <TouchableOpacity
-        style={styles.container(selectedJob, item)}
-        onPress={() => handleCardPress(item)}
-    >
+    return (
+
         <TouchableOpacity
-            style={styles.logoContainer(selectedJob, item)}
+            style={styles.container(selectedJob, item)}
+            onPress={() => handleCardPress(item)}
         >
+            <TouchableOpacity
+                style={styles.logoContainer(selectedJob, item)}
+            >
 
-            <Image
-                source={
-                    {
-                        uri: checkImageURL(item.employer_logo)
-                            ? item.employer_logo
-                            : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg'
+                <Image
+                    source={
+                        {
+                            uri: checkImageURL(item.employer_logo)
+                                ? item.employer_logo
+                                : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg'
+                        }
                     }
-                }
-                resizeMode="contain"
-                style={styles.logoImage}
-            />
+                    resizeMode="contain"
+                    style={styles.logoImage}
+                />
 
-        </TouchableOpacity>
+            </TouchableOpacity>
 
-        <Text
-            style={styles.companyName}
-            numberOfLines={1}
-        >
-            {item.employer_name}
-        </Text>
-
-        <View
-            style={styles.infoContainer}
-        >
             <Text
-                style={styles.jobName(selectedJob, item)}
+                style={styles.companyName}
                 numberOfLines={1}
             >
-                {item.job_title}
+                {item.employer_name}
             </Text>
-            <Text
-                style={styles.location}
+
+            <View
+                style={styles.infoContainer}
             >
-                {item.job_country}
-            </Text>
-        </View>
-    </TouchableOpacity>
-  )
+                <Text
+                    style={styles.jobName(selectedJob, item)}
+                    numberOfLines={1}
+                >
+                    {item.job_title}
+                </Text>
+                <Text
+                    style={styles.location}
+                >
+                    {item.job_country}
+                </Text>
+            </View>
+        </TouchableOpacity>
+    )
 }
 
 export default PopularJobCard
