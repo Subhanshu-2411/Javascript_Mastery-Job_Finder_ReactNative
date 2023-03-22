@@ -66,7 +66,6 @@ const Popularjobs = () => {
                     )
                 }
             </View>
-
         </View>
     )
 }
